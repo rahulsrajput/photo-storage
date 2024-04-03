@@ -1,0 +1,4 @@
+.venv/
+.env
+todo.txt
+db.sqlite3

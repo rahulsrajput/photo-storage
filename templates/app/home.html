@@ -1,0 +1,50 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block title %}Photo Storage{% endblock %}
+
+{% block content %}
+<style>
+    .list-group-item a {
+        text-decoration: none;
+        color: rgb(255, 255, 255);
+    }
+
+    .img-thumbnail {
+        height: 200px;
+        object-fit: cover;
+    }
+</style>
+
+<div class="section mt-5">
+
+    <div class="row">
+        <div class="col-md-3 mb-5">
+            <ul class="list-group">
+                <li class="list-group-item"><a href="{% url 'home' %}">All</a></li>
+                
+                {% for category in categories %}
+                <li class="list-group-item"><a href="?category={{category.name}}">{{category.name}}</a></li>
+                {% endfor %}
+
+            </ul>
+        </div>
+
+
+        <div class="col-md-9">
+            <div class="row">
+
+                {% for photo in photos %}
+                <div class="col-md-4">
+                    <a href="{{photo.image.url}}" target="_blank" class="d-block mb-4 h-100">
+                        <img class="img-fluid img-thumbnail" src="{{photo.image.url}}"
+                            alt="image">
+                    </a>
+                </div>
+                {% endfor %}
+       
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
